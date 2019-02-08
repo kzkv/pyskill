@@ -64,8 +64,7 @@ def q3(input_list: list, divider=",") -> str:
         if len(output_list) > 0:
             return divider.join(["{0:.2f}".format(item) for item in output_list])
         else:
-            return None
+            return None  # lining error: return won't match the annotation, plus poing if noticed
 
     except:
         return "err"
-
