@@ -32,7 +32,7 @@ def test_q1():
 # JSON to dict
 # addressing dict entry by key
 # sorting by value
-# comparison token (==)
+# equal token (==)
 
 @pytest.mark.q2
 def test_q2():
@@ -43,3 +43,30 @@ def test_q2():
     for pair in Q2:
         print("expected output is '{}' for the file '{}'".format(pair[1], pair[0]))
         assert workfile.q2(pair[0]) == pair[1]
+
+
+# Q3: filter and manipulate list items
+
+# function annotation
+# optional params
+# string formatting
+# comparison
+# map/filter or list comprehension
+# list length
+# None object
+
+@pytest.mark.q3
+def test_q3():
+    Q3 = [([1, 5, 10, 15, 20], None, "3.33,5.00,6.67"),
+          ([-1, 0, 1, 11, 12], "|", "3.67|4.00"),
+          ([1, 2 ,3], None, None),
+          ([], None, None),
+          ("input", None, "err")]
+
+    for pair in Q3:
+        if pair[1] is None:
+            print("input is '{}', with exected result '{}'".format(pair[0], pair[2]))
+            assert workfile.q3(pair[0]) == pair[2]
+        else:
+            print("input is '{}', divider is '{}', exected result '{}'".format(pair[0], pair[1], pair[2]))
+            assert workfile.q3(pair[0], pair[1]) == pair[2]

@@ -48,4 +48,24 @@ def q2(file_name):
         return "file_err"
 
 
-print(q2("q2_1.json"))
+# Q3
+# Get a list of ints, remove all the items which are less than 10,
+# return a CSV-string of the rest divided by 3 as floats with 2 decimals (like "3.66,4.00,4.3").
+
+# Code fragment should be an annotated function named q3, with list as input and string returned.
+# The caller should be able to modify the divider via optional argument (divider=string) defaulting to ","
+# If there are no items in the resulting list, return null-object; any errors should return "err".
+
+
+def q3(input_list: list, divider=",") -> str:
+    try:
+        output_list = [item / 3 for item in input_list if item >= 10]
+
+        if len(output_list) > 0:
+            return divider.join(["{0:.2f}".format(item) for item in output_list])
+        else:
+            return None
+
+    except:
+        return "err"
+
