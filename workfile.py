@@ -1,6 +1,7 @@
 """ Workfile to be changed by the applicant """
 
 import json
+import requests
 
 
 # Q1
@@ -64,7 +65,27 @@ def q3(input_list: list, divider=",") -> str:
         if len(output_list) > 0:
             return divider.join(["{0:.2f}".format(item) for item in output_list])
         else:
-            return None  # lining error: return won't match the annotation, plus poing if noticed
+            return None  # lining error: return won't match the annotation, plus point if noticed
 
     except:
         return "err"
+
+
+# Q4
+# Define a URLGetter() class, which inits with two instance variables:
+# base_url (str, defaulting to 'https://swapi.co/api/people/') and params (dict, defaulting to {}).
+# Repr should return URL string formatted as '<URLGetter: https://url.com/?param=value>',
+# class method get_body should return response body as JSON converted to dict.
+
+class URLGetter():
+
+    def __init__(self, base_url="https://swapi.co/api/people/", params={}):
+        self.base_url = base_url
+        self.params = params
+        self.request = requests.get(base_url, params=self.params)
+
+    def __repr__(self):
+        return "<URLGetter: {}>".format(self.request.url)
+
+    def get_body(self):
+        return self.request.json()
