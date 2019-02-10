@@ -87,13 +87,13 @@ def test_q4():
            "params": {"search": "chew"},
            "path": "results/0/name",
            "lookup": "Chewbacca",
-           "resulting_url": "https://swapi.co/api/people/?search=chew"},
+           "resultingURL": "https://swapi.co/api/people/?search=chew"},
 
           {"url": "https://swapi.co/api/people/1/",
            "params": {"format": "wookiee"},
            "path": "whrascwo",
            "lookup": "Lhuorwo Sorroohraanorworc",
-           "resulting_url": "https://swapi.co/api/people/1/?format=wookiee"}]
+           "resultingURL": "https://swapi.co/api/people/1/?format=wookiee"}]
 
     for test_item in Q4:
         if test_item["url"] == None:
@@ -104,4 +104,25 @@ def test_q4():
             getter = workfile.URLGetter(base_url=test_item["url"], params=test_item["params"])
             assert dpath.util.get(getter.get_body(), test_item["path"]) == test_item["lookup"]
 
-        assert getter.request.url == test_item["resulting_url"]
+        assert getter.request.url == test_item["resultingURL"]
+
+
+# Q5: Selenium
+
+# Selenium/webdriver usage
+# element_by lookup
+# importing particular func from a module
+# with clause or other driver usage wrap up
+
+@pytest.mark.q5
+def test_q5():
+    Q5 = [{"url": "https://swapi.co",
+           "className": "btn-primary",
+           "expectedText": "request"},
+
+          {"url": "https://swapi.co",
+           "className": "input-group-addon",
+           "expectedText": "https://swapi.co/api/"}]
+
+    for test_item in Q5:
+        assert workfile.q5(test_item["url"], test_item["className"]) == test_item["expectedText"]

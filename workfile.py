@@ -2,6 +2,7 @@
 
 import json
 import requests
+from selenium import webdriver
 
 
 # Q1
@@ -72,8 +73,10 @@ def q3(input_list: list, divider=",") -> str:
 
 
 # Q4
-# Define a URLGetter() class, which inits with two instance variables:
+# Define a URLGetter class, which inits with two instance variables:
 # base_url (str, defaulting to 'https://swapi.co/api/people/') and params (dict, defaulting to {}).
+
+# Code fragment should be a class named URLGetter, with relevant methods and attributes defined.
 # Repr should return URL string formatted as '<URLGetter: https://url.com/?param=value>',
 # class method get_body should return response body as JSON converted to dict.
 
@@ -89,3 +92,17 @@ class URLGetter():
 
     def get_body(self):
         return self.request.json()
+
+
+# Q5
+# Write a function which would grab the element text by URL and class name supplied
+
+# Code fragment should be a function named q5, with URL and class name as inputs
+# and element text returned as a string.
+# Chrome webdriver is installed and should be used with Selenium.
+
+def q5(url, class_name):
+    with webdriver.Chrome() as driver:
+        driver.get(url)
+        elem = driver.find_element_by_class_name(class_name)
+        return elem.text
